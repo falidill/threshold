@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Threshold — Experience weddings across cultures, by invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171312;
+    --indigo:#1B2A4A;
+    --indigo-deep:#101a30;
+    --marigold:#E0972F;
+    --terracotta:#BD4F37;
+    --ivory:#F7F1E6;
+    --ivory-dim:#ECE3D2;
+    --line: rgba(23,19,18,0.14);
+    --line-light: rgba(247,241,230,0.22);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--terracotta); outline-offset:3px;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--indigo);
+    background-image:
+      radial-gradient(circle at 18% 20%, rgba(224,151,47,0.18), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(189,79,55,0.22), transparent 50%);
+    color:var(--ivory);
+    padding: 64px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image: repeating-linear-gradient(45deg, rgba(247,241,230,0.025) 0 2px, transparent 2px 14px);
+    pointer-events:none;
+  }
+  .nav{display:flex; align-items:center; justify-content:space-between; margin-bottom:72px; position:relative; z-index:2;}
+  .brand{font-family:'Fraunces',serif; font-size:1.3rem; letter-spacing:0.01em;}
+  .brand em{font-style:italic; color:var(--marigold); font-weight:500;}
+  .nav-cta{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+    border:1px solid var(--line-light); padding:9px 16px; border-radius:2px; text-decoration:none;
+    transition: background .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{background:var(--ivory); color:var(--indigo-deep);}
+
+  .hero-grid{display:grid; grid-template-columns: 1.2fr 0.8fr; gap:48px; align-items:center; position:relative; z-index:2;}
+  .hero h1{font-size:3.4rem; line-height:1.08; max-width:560px;}
+  .hero h1 i{font-style:italic; color:var(--marigold);}
+  .hero p.lede{font-size:1.08rem; line-height:1.6; color:var(--ivory-dim); max-width:460px; margin-top:22px;}
+  .hero-actions{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.92rem;
+    padding:13px 24px; border-radius:3px; text-decoration:none; display:inline-block;
+    border:1px solid transparent; transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--marigold); color:var(--indigo-deep);}
+  .btn-ghost{border:1px solid var(--line-light); color:var(--ivory);}
+
+  /* invitation card signature element */
+  .invite-card{
+    background:var(--ivory);
+    color:var(--ink);
+    border-radius:2px;
+    padding:30px 28px 26px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+    position:relative;
+    transform: rotate(1.2deg);
+  }
+  .invite-card::before{
+    content:"";
+    position:absolute; inset:10px;
+    border:1px solid rgba(23,19,18,0.18);
+    pointer-events:none;
+  }
+  .invite-card .seal{
+    width:46px; height:46px; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #d6663f, var(--terracotta));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--ivory); font-family:'Fraunces',serif; font-style:italic; font-size:1.1rem;
+    margin-bottom:16px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+  }
+  .invite-card .line1{font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--terracotta); margin-bottom:6px;}
+  .invite-card h3{font-size:1.4rem; line-height:1.3; font-style:italic;}
+  .invite-card .meta{margin-top:18px; padding-top:16px; border-top:1px dashed var(--line); font-size:0.85rem; color:#54483f; line-height:1.6;}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:84px 0;}
+  .section-head{max-width:620px; margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--terracotta); margin-bottom:12px; display:block;}
+  .section-head h2{font-size:2.1rem; line-height:1.18;}
+
+  /* ---------- WHY / INTRO STRIP ---------- */
+  .strip{background:var(--ivory-dim); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .strip .wrap{padding:42px 28px;}
+  .strip p{font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; line-height:1.5; max-width:760px; color:var(--indigo-deep);}
+
+  /* ---------- TOGGLE / DUAL PATH ---------- */
+  .paths{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .path-card{
+    background:#fff; border:1px solid var(--line); border-radius:4px; padding:34px 30px;
+    position:relative;
+  }
+  .path-card .tag{
+    font-family:'IBM Plex Mono',monospace; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase;
+    padding:5px 10px; border-radius:2px; display:inline-block; margin-bottom:18px;
+  }
+  .path-card.guest .tag{background:rgba(224,151,47,0.16); color:#95661c;}
+  .path-card.host .tag{background:rgba(27,42,74,0.1); color:var(--indigo);}
+  .path-card h3{font-size:1.5rem; margin-bottom:10px;}
+  .path-card p{font-size:0.95rem; line-height:1.6; color:#54483f; margin-bottom:22px;}
+  .path-card ul{margin:0 0 26px; padding:0; list-style:none;}
+  .path-card li{
+    font-size:0.88rem; padding:9px 0; border-top:1px solid var(--line); display:flex; gap:10px; color:#3a322c;
+  }
+  .path-card li:first-child{border-top:none;}
+  .path-card li::before{content:"—"; color:var(--terracotta); flex-shrink:0;}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .step{padding:28px 22px; border-right:1px solid var(--line);}
+  .step:last-child{border-right:none;}
+  .step .num{font-family:'Fraunces',serif; font-style:italic; font-size:1.6rem; color:var(--terracotta); display:block; margin-bottom:14px;}
+  .step h4{font-size:1.02rem; font-weight:600; font-family:'Inter',sans-serif; margin-bottom:8px;}
+  .step p{font-size:0.86rem; color:#54483f; line-height:1.55; margin:0;}
+
+  /* ---------- SAFETY ---------- */
+  .safety{background:var(--indigo-deep); color:var(--ivory);}
+  .safety .section-head h2{color:var(--ivory);}
+  .safety .section-head .eyebrow{color:var(--marigold);}
+  .safety-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line-light); border:1px solid var(--line-light);}
+  .safety-item{background:var(--indigo-deep); padding:26px 24px;}
+  .safety-item h4{font-family:'Inter',sans-serif; font-weight:600; font-size:0.98rem; margin-bottom:8px; color:var(--ivory);}
+  .safety-item p{font-size:0.85rem; color:rgba(247,241,230,0.7); line-height:1.55; margin:0;}
+
+  /* ---------- PRICING NOTE ---------- */
+  .price-note{display:flex; gap:30px; align-items:flex-start; background:#fff; border:1px solid var(--line); border-radius:4px; padding:30px 32px; margin-top:40px;}
+  .price-note .figure{font-family:'Fraunces',serif; font-style:italic; font-size:2.4rem; color:var(--terracotta); white-space:nowrap;}
+  .price-note .figure small{font-family:'Inter',sans-serif; font-style:normal; font-size:0.8rem; display:block; color:#54483f; font-weight:500; margin-top:4px;}
+  .price-note p{font-size:0.92rem; line-height:1.6; color:#3a322c; margin:0;}
+
+  /* ---------- WAITLIST FORMS ---------- */
+  .waitlist{background:var(--ivory-dim); border-top:1px solid var(--line);}
+  .toggle-row{display:flex; gap:0; margin-bottom:36px; border:1px solid var(--ink); border-radius:3px; overflow:hidden; width:fit-content;}
+  .toggle-btn{
+    font-family:'IBM Plex Mono',monospace; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase;
+    background:transparent; border:none; padding:12px 22px; cursor:pointer; color:var(--ink);
+    border-right:1px solid var(--ink);
+  }
+  .toggle-btn:last-child{border-right:none;}
+  .toggle-btn.active{background:var(--ink); color:var(--ivory);}
+  form{display:none; max-width:480px;}
+  form.active{display:block;}
+  .field{margin-bottom:18px;}
+  label{display:block; font-size:0.82rem; font-weight:600; margin-bottom:7px;}
+  input, select, textarea{
+    width:100%; font-family:'Inter',sans-serif; font-size:0.95rem; padding:11px 13px;
+    border:1px solid var(--line); border-radius:3px; background:#fff; color:var(--ink);
+  }
+  input:focus, select:focus, textarea:focus{border-color:var(--terracotta);}
+  textarea{resize:vertical; min-height:80px;}
+  .submit-btn{
+    font-family:'Inter',sans-serif; font-weight:600; font-size:0.95rem; padding:13px 26px;
+    background:var(--terracotta); color:#fff; border:none; border-radius:3px; cursor:pointer; margin-top:6px;
+  }
+  .submit-btn:hover{background:#a5402b;}
+  .form-note{font-size:0.78rem; color:#6b5f54; margin-top:14px; line-height:1.5;}
+  .confirm{display:none; font-family:'Fraunces',serif; font-style:italic; font-size:1.2rem; color:var(--indigo-deep); padding:18px 0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0; border-top:1px solid var(--line);}
+  footer .wrap{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
+  footer .eyebrow{color:#8a7d6f;}
+
+  @media (max-width: 860px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-grid .invite-card{order:-1; transform:rotate(0);}
+    .hero h1{font-size:2.4rem;}
+    .paths{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;}
+    .step{border-bottom:1px solid var(--line);}
+    .safety-grid{grid-template-columns:1fr;}
+    .price-note{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <nav class="nav">
+      <div class="brand">Thresh<em>old</em></div>
+      <a href="#join" class="nav-cta">Join the waitlist</a>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <h1>Experience weddings across cultures — <i>respectfully, safely, and by invitation.</i></h1>
+        <p class="lede">Join curated wedding celebrations hosted by couples and families who want to share their traditions with a small number of respectful guests.</p>
+        <div class="hero-actions">
+          <a href="#join" class="btn btn-primary">I want to attend</a>
+          <a href="#join" class="btn btn-ghost">I want to host</a>
+        </div>
+      </div>
+      <div class="invite-card">
+        <div class="seal">T</div>
+        <div class="line1">You are cordially invited</div>
+        <h3>To witness a tradition that isn't your own.</h3>
+        <div class="meta">
+          Hosted by approval only.<br>
+          Guest conduct guide included.<br>
+          Payment held until host confirms.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="wrap">
+    <p>"Not strangers paying to attend weddings — guests welcomed, on the host's terms, to celebrate a culture in person."</p>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Two doors, one threshold</span>
+      <h2>Built for the people hosting and the people asking to be let in.</h2>
+    </div>
+    <div class="paths">
+      <div class="path-card guest">
+        <span class="tag">Guest</span>
+        <h3>Request to attend</h3>
+        <p>Browse celebrations that are open to outside guests, and ask to be considered.</p>
+        <ul>
+          <li>Build a short, verified profile</li>
+          <li>Request a seat at a celebration that interests you</li>
+          <li>Receive etiquette and dress-code guidance once approved</li>
+          <li>Pay only after the host confirms your spot</li>
+        </ul>
+      </div>
+      <div class="path-card host">
+        <span class="tag">Host</span>
+        <h3>Welcome guests, on your terms</h3>
+        <p>Couples, families, and wedding planners decide if, how many, and who.</p>
+        <ul>
+          <li>Open as many or as few seats as you choose</li>
+          <li>Review every guest request before approving</li>
+          <li>Set your own rules — photos, seating, dress code</li>
+          <li>Receive payment automatically once you approve a guest</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="steps">
+  <div class="step"><span class="num">i.</span><h4>Guest requests</h4><p>A guest finds a celebration and submits a short request to attend.</p></div>
+  <div class="step"><span class="num">ii.</span><h4>Host reviews</h4><p>The host reads the request and approves or declines — no obligation either way.</p></div>
+  <div class="step"><span class="num">iii.</span><h4>Guidance is sent</h4><p>Approved guests get etiquette, dress code, and house rules ahead of the day.</p></div>
+  <div class="step"><span class="num">iv.</span><h4>Payment is released</h4><p>Only after approval does payment process — never before.</p></div>
+</div>
+
+<section class="safety">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Built on consent</span>
+      <h2>This is a hosted experience, not a transaction on someone's wedding day.</h2>
+    </div>
+    <div class="safety-grid">
+      <div class="safety-item"><h4>Verified profiles</h4><p>Every guest and host completes identity verification before requesting or approving.</p></div>
+      <div class="safety-item"><h4>Host approval required</h4><p>No guest attends without explicit, individual host sign-off.</p></div>
+      <div class="safety-item"><h4>Guest code of conduct</h4><p>Guests agree to dress, behavior, and etiquette expectations before they ever pay.</p></div>
+      <div class="safety-item"><h4>No photos or video by default</h4><p>Recording is off unless the host turns it on for that celebration.</p></div>
+      <div class="safety-item"><h4>Respect for custom</h4><p>Hosts set the religious and cultural expectations; guests agree before approval.</p></div>
+      <div class="safety-item"><h4>Clear refunds</h4><p>Cancellation and refund terms are stated upfront, for both sides.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How payment works</span>
+      <h2>Hosts set the price. Guests pay only after they're approved.</h2>
+    </div>
+    <div class="price-note">
+      <div class="figure">$150<small>guest pays</small></div>
+      <div class="figure">$120<small>host receives</small></div>
+      <div class="figure">$30<small>platform fee</small></div>
+      <p style="flex:1; min-width:200px;">An illustrative split. The host sets the experience price; Threshold holds payment until the host approves the guest, then releases the host's share automatically.</p>
+    </div>
+  </div>
+</section>
+
+<section class="waitlist" id="join">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Before we build the rest</span>
+      <h2>We're testing demand before we touch payments. Join the waitlist.</h2>
+    </div>
+
+    <div class="toggle-row" role="tablist" aria-label="Choose waitlist form">
+      <button class="toggle-btn active" id="tab-guest" onclick="showForm('guest')">I want to attend</button>
+      <button class="toggle-btn" id="tab-host" onclick="showForm('host')">I want to host</button>
+    </div>
+
+    <form id="form-guest" class="active" onsubmit="return handleSubmit(event,'guest')">
+      <div class="field">
+        <label for="g-name">Full name</label>
+        <input id="g-name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="g-email">Email</label>
+        <input id="g-email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="g-city">City / region</label>
+        <input id="g-city" type="text" placeholder="e.g. Brooklyn, NY">
+      </div>
+      <div class="field">
+        <label for="g-interest">What draws you to this?</label>
+        <textarea id="g-interest" placeholder="Tell us a bit about why you'd want to attend a wedding outside your own background."></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Join as a guest</button>
+      <p class="form-note">No payment is collected at this stage. We'll email you when celebrations open near you.</p>
+      <div class="confirm" id="confirm-guest">You're on the list. We'll be in touch before any seats open.</div>
+    </form>
+
+    <form id="form-host" onsubmit="return handleSubmit(event,'host')">
+      <div class="field">
+        <label for="h-name">Full name</label>
+        <input id="h-name" type="text" required>
+      </div>
+      <div class="field">
+        <label for="h-email">Email</label>
+        <input id="h-email" type="email" required>
+      </div>
+      <div class="field">
+        <label for="h-role">You are...</label>
+        <select id="h-role">
+          <option>A couple getting married</option>
+          <option>A family member helping plan</option>
+          <option>A wedding planner or coordinator</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="h-date">Approximate wedding date (if known)</label>
+        <input id="h-date" type="text" placeholder="e.g. Spring 2027, or not yet set">
+      </div>
+      <div class="field">
+        <label for="h-tradition">Tradition or culture you'd be sharing</label>
+        <input id="h-tradition" type="text" placeholder="e.g. Punjabi Sikh wedding, Greek Orthodox wedding">
+      </div>
+      <button class="submit-btn" type="submit">Join as a host</button>
+      <p class="form-note">No payment is collected at this stage. Listing your celebration is always optional — you choose if, when, and how many guests to welcome.</p>
+      <div class="confirm" id="confirm-host">You're on the list. We'll reach out before we open hosting.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow">Threshold — by invitation</span>
+    <span class="eyebrow">A waitlist, not a marketplace. Yet.</span>
+  </div>
+</footer>
+
+<script>
+function showForm(which){
+  document.getElementById('tab-guest').classList.toggle('active', which==='guest');
+  document.getElementById('tab-host').classList.toggle('active', which==='host');
+  document.getElementById('form-guest').classList.toggle('active', which==='guest');
+  document.getElementById('form-host').classList.toggle('active', which==='host');
+}
+function handleSubmit(e, which){
+  e.preventDefault();
+  document.getElementById('form-'+which).querySelectorAll('input, textarea, select, button').forEach(el => el.style.display = (el.classList.contains('submit-btn') ? 'none' : el.style.display));
+  // Hide all fields, show confirmation
+  const form = document.getElementById('form-'+which);
+  Array.from(form.children).forEach(child => {
+    if(!child.classList.contains('confirm')) child.style.display = 'none';
+  });
+  document.getElementById('confirm-'+which).style.display = 'block';
+  return false;
+}
+</script>
+
+</body>
+</html>
